@@ -31,7 +31,7 @@ describe("initial conditions", () => {
     expect(ethPrice).toBeLessThan(1000);
   });
 
-  test.skip("buy DAI from Uniswap via MyDapp", async () => {
+  test("buy DAI from Uniswap via MyDapp", async () => {
     // confirm we have chainId of 1
     const network = await wallet.provider.getNetwork();
     expect(network.chainId).toBe(1);
@@ -40,7 +40,6 @@ describe("initial conditions", () => {
     const ethBefore = await wallet.getBalance();
     const daiBefore = await daiContract.balanceOf(wallet.address);
     const ethPrice = await myDapp.getEthPriceInDai();
-    const expectedDai = ethPrice.mul(5);
 
     // do the actual swapping
     await myDapp.swapEthToDai({
@@ -51,9 +50,14 @@ describe("initial conditions", () => {
     // collect info on state after the swap
     const ethAfter = await wallet.getBalance();
     const daiAfter = await daiContract.balanceOf(wallet.address);
-    const ethLost = parseFloat(fromWei(ethBefore.sub(ethAfter)));
 
-    expect(fromWei(daiAfter)).toBe(fromWei(daiBefore.add(expectedDai)));
+    // check DAI gained
+    const daiGained = parseFloat(fromWei(daiAfter.sub(daiBefore)));
+    const expectedDaiGained = parseFloat(fromWei(ethPrice.mul(5)));
+    expect(daiGained).toBeCloseTo(expectedDaiGained, 0);
+
+    // check ETH lost
+    const ethLost = parseFloat(fromWei(ethBefore.sub(ethAfter)));
     expect(ethLost).toBeCloseTo(5);
   });
 });
