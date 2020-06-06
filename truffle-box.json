@@ -1,0 +1,10 @@
+{
+  "ignore": [],
+  "commands": {
+    "Compile": "truffle compile",
+    "Start test chain": "npm start",
+    "Migrate": "npm run migrate",
+    "Test": "npm test",
+    "Migrate and Test": "npm run migrate-and-test"
+  }
+}
