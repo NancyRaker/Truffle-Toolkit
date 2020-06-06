@@ -3,11 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "truffle-config.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "start": "node ./tests/utils/test-chain.js",
+    "migrate": "truffle migrate --reset --network test",
+    "migrate-and-test": "npm run migrate && npm test"
+  },
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "./tests/utils/test-environment.js"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +19,14 @@
   "dependencies": {
     "@openzeppelin/contracts": "^2.5.0",
     "@studydefi/money-legos": "^2.0.4",
-    "dotenv": "^8.2.0"
+    "@truffle/hdwallet-provider": "^1.0.34",
+    "dotenv": "^8.2.0",
+    "ethers": "^4.0.46"
+  },
+  "devDependencies": {
+    "ganache-cli": "^6.9.1",
+    "ganache-core": "^2.10.2",
+    "jest": "^25.4.0",
+    "truffle": "^5.1.22"
   }
 }

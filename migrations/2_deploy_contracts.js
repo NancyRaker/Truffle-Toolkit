@@ -1,5 +1,5 @@
-const UniswapLiteBase = artifacts.require("UniswapLiteBase");
+const MyDapp = artifacts.require("MyDapp");
 
-module.exports = function(deployer) {
-  deployer.deploy(UniswapLiteBase);
+module.exports = function (deployer) {
+  deployer.deploy(MyDapp);
 };
