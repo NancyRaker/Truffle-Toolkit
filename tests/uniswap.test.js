@@ -2,8 +2,8 @@ require("dotenv").config();
 jest.setTimeout(100000);
 
 const { ethers } = require("ethers");
-const erc20 = require("@studydefi/money-legos/erc20").default;
-const uniswap = require("@studydefi/money-legos/uniswap").default;
+const erc20 = require("@studydefi/money-legos/erc20");
+const uniswap = require("@studydefi/money-legos/uniswap");
 
 const fromWei = (x, u = 18) => ethers.utils.formatUnits(x, u);
 

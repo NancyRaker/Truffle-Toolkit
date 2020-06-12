@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 const { ethers } = require("ethers");
-const erc20 = require("@studydefi/money-legos/erc20").default;
+const erc20 = require("@studydefi/money-legos/erc20");
 
 const fromWei = (x, u = 18) => ethers.utils.formatUnits(x, u);
 

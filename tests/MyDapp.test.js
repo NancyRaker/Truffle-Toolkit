@@ -2,7 +2,7 @@ require("dotenv").config();
 jest.setTimeout(100000);
 
 const { ethers } = require("ethers");
-const erc20 = require("@studydefi/money-legos/erc20").default;
+const erc20 = require("@studydefi/money-legos/erc20");
 
 const MyDappArtifact = require("../build/contracts/MyDapp.json");
 

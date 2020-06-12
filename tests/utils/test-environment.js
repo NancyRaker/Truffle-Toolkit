@@ -4,7 +4,7 @@ const { ethers } = require("ethers");
 const Ganache = require("ganache-core");
 const NodeEnvironment = require("jest-environment-node");
 
-const startChildChain = async () => {
+const startChain = async () => {
   const ganache = Ganache.provider({
     fork: "http://127.0.0.1:8545",
     network_id: 1,
@@ -36,7 +36,7 @@ class CustomEnvironment extends NodeEnvironment {
   async setup() {
     await super.setup();
 
-    const { wallet } = await startChildChain();
+    const { wallet } = await startChain();
     this.wallet = wallet;
     this.global.wallet = wallet;
   }
@@ -45,7 +45,6 @@ class CustomEnvironment extends NodeEnvironment {
     await super.teardown();
   }
 
-  //@ts-ignore
   runScript(script) {
     return super.runScript(script);
   }
