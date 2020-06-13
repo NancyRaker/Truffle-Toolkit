@@ -11,7 +11,8 @@
   },
   "jest": {
     "verbose": true,
-    "testEnvironment": "./tests/utils/test-environment.js"
+    "testEnvironment": "./tests/utils/test-environment.js",
+    "testTimeout": 120000
   },
   "keywords": [],
   "author": "",
