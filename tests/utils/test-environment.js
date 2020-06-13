@@ -23,9 +23,6 @@ const startChain = async () => {
 };
 
 class CustomEnvironment extends NodeEnvironment {
-  testPath;
-  docblockPragmas;
-  wallet;
 
   constructor(config, context) {
     super(config);
