@@ -17,7 +17,7 @@ describe("initial conditions", () => {
     daiContract = new ethers.Contract(erc20.dai.address, erc20.dai.abi, wallet);
 
     myDapp = new ethers.Contract(
-      MyDappArtifact.networks[1].address,
+      MyDappArtifact.networks['1'].address,
       MyDappArtifact.abi,
       wallet,
     );

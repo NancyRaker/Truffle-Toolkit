@@ -23,8 +23,12 @@ const server = ganache.server({
 });
 
 server.listen(PORT, (err, chain) => {
-  console.log(`Forked off of node: ${process.env.MAINNET_NODE_URL}\n`);
-  console.log(`Test private key:\n`);
-  console.log(`\t${process.env.PRIV_KEY_TEST}`);
-  console.log(`\nTest chain started on port ${PORT}, listening...`);
+  if (err) {
+    console.log(err);
+  } else {
+    console.log(`Forked off of node: ${process.env.MAINNET_NODE_URL}\n`);
+    console.log(`Test private key:\n`);
+    console.log(`\t${process.env.PRIV_KEY_TEST}`);
+    console.log(`\nTest chain started on port ${PORT}, listening...`);
+  }
 });
